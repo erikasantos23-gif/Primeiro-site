@@ -1,0 +1,15 @@
+const INTENT_MAP = {
+  TUTORIAL: ['passo a passo', 'como fazer', 'tutorial'],
+  RECOMENDACAO: ['recomenda', 'sugestão', 'melhor'],
+  DICA: ['dica', 'truque', 'como evitar', 'segredo']
+};
+
+function classifyIntent(texto) {
+  const msg = texto.toLowerCase();
+  for (const [intent, keywords] of Object.entries(INTENT_MAP)) {
+    if (keywords.some(kw => msg.includes(kw))) return intent;
+  }
+  return 'GERAL';
+}
+
+module.exports = { classifyIntent };
